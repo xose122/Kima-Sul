@@ -146,7 +146,7 @@
         .character-subtitle { font-size: 1.15rem; font-style: italic; color: var(--ink-light); letter-spacing: 0.05em; }
 
         /* ===== COMBAT ROW ===== */
-        .combat-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 25px; }
+        .combat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
         .combat-stat {
             background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
             border: 2px solid var(--teal-light); border-radius: 8px; padding: 12px 8px; text-align: center;
@@ -460,7 +460,7 @@
         @media (max-width: 768px) {
             .sheet { padding: 15px; }
             .character-name { font-size: 2rem; }
-            .combat-row { grid-template-columns: repeat(3, 1fr); }
+            .combat-row { grid-template-columns: repeat(4, 1fr); }
             .abilities-grid { grid-template-columns: repeat(3, 1fr); }
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
             .two-columns, .three-columns { grid-template-columns: 1fr; }
@@ -514,10 +514,6 @@
         <div class="combat-stat initiative-roll" data-bonus="3">
             <div class="combat-stat-label">Initiative</div>
             <div class="combat-stat-value">+3</div>
-        </div>
-        <div class="combat-stat">
-            <div class="combat-stat-label">Passive Percep.</div>
-            <div class="combat-stat-value">18</div>
         </div>
     </div>
 
