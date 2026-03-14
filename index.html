@@ -998,7 +998,6 @@
             </div>
 
             <div class="aspect-traits">
-                <div class="aspect-trait"><span class="aspect-trait-name">Resistances:</span> <span id="aspectResistanceDisplay">Fire</span></div>
                 <div class="aspect-trait"><span class="aspect-trait-name">Immunities:</span> Exhaustion, Frightened, Paralyzed, Poisoned, Unconscious</div>
                 <div class="aspect-trait"><span class="aspect-trait-name">Senses:</span> Darkvision 60 ft., Passive Perception 10</div>
                 <div class="aspect-trait"><span class="aspect-trait-name">Languages:</span> Primordial; understands your languages</div>
@@ -2051,7 +2050,6 @@ function updateAspect() {
     document.getElementById('aspectHP').max = hpMax;
     document.getElementById('aspectSpeed').textContent = data.speed;
     document.getElementById('aspectResistance').textContent = data.resistance;
-    document.getElementById('aspectResistanceDisplay').textContent = data.resistance;
     document.getElementById('aspectFormTrait').innerHTML = data.trait;
     document.getElementById('aspectMultiattack').textContent = attacks;
     document.getElementById('aspectDamage').textContent = damage;
