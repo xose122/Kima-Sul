@@ -422,7 +422,38 @@
         .pendant-bonus { font-size: 0.84rem; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #7a4090; }
         .pendant-bonus strong { color: #4a2060; }
 
-        /* ===== SPELLCASTING ===== */
+        /* ===== ELEMENTAL ASPECT ===== */
+        .aspect-section { margin-bottom: 25px; }
+        .aspect-box { background: linear-gradient(135deg, var(--teal-dark) 0%, #0d4a35 100%); border: 2px solid var(--teal); border-radius: 10px; padding: 18px; color: var(--parchment); }
+        .aspect-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+        .aspect-title { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: #fff; }
+        .aspect-subtitle { font-size: 0.82rem; color: rgba(255,255,255,0.7); font-style: italic; margin-top: 2px; }
+        .aspect-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .aspect-select { font-family: 'Cinzel', serif; padding: 5px 10px; border-radius: 4px; border: 2px solid var(--teal); background: var(--parchment); color: var(--ink); font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+        .aspect-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+        .aspect-stat-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; text-align: center; }
+        .aspect-stat-label { font-family: 'Cinzel', serif; font-size: 0.6rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .aspect-stat-value { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: #fff; }
+        .aspect-hp-tracker { display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .aspect-hp-input { width: 52px; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); background: var(--parchment); border: 1px solid var(--teal); border-radius: 4px; text-align: center; padding: 2px; }
+        .aspect-hp-max { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .aspect-abilities { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 12px; }
+        .aspect-ability { background: rgba(255,255,255,0.08); border-radius: 5px; padding: 6px 4px; text-align: center; }
+        .aspect-ability-name { font-family: 'Cinzel', serif; font-size: 0.6rem; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+        .aspect-ability-score { font-size: 1rem; font-weight: 600; color: #fff; }
+        .aspect-ability-mod { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+        .aspect-traits { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; font-size: 0.85rem; }
+        .aspect-trait { color: rgba(255,255,255,0.85); line-height: 1.4; }
+        .aspect-trait-name { font-weight: 700; color: #fff; }
+        .aspect-actions { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; }
+        .aspect-action { color: rgba(255,255,255,0.85); line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
+        .aspect-action-name { font-weight: 700; color: var(--gold); }
+        .aspect-form-trait { background: rgba(255,255,255,0.08); border-left: 3px solid var(--gold); border-radius: 0 5px 5px 0; padding: 8px 10px; margin-bottom: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.5; }
+        .aspect-form-trait-name { font-weight: 700; color: var(--gold); }
+        @media (max-width: 768px) {
+            .aspect-stats-row { grid-template-columns: repeat(2, 1fr); }
+            .aspect-abilities { grid-template-columns: repeat(3, 1fr); }
+        }
         .spellcasting-section { margin-bottom: 22px; }
         .spellcasting-header { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
         .spell-stat { background: var(--parchment-dark); border: 1px solid var(--teal); border-radius: 6px; padding: 12px 8px; text-align: center; }
@@ -478,7 +509,6 @@
             .skills-grid { grid-template-columns: 1fr; }
             .weapon-forms { grid-template-columns: 1fr; }
             .resonance-charges { grid-template-columns: repeat(2, 1fr); }
-            .communion-stats { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -804,7 +834,7 @@
                     <span class="tag-name">Focus (Lv6):</span> Adds +WIS (+4) a ST de CON para mantener concentración → total <strong>+11</strong>
                 </div>
                 <div class="communion-feature-tag">
-                    <span class="tag-name">Shroud Embodiment (Lv10):</span> Al activar Communion, lanza <em>Protection from Energy</em> (o <em>Elminster's Elusion</em> con Pendants) sobre ti mismo. Sin slot, sin concentración, dura hasta que termine la Communion
+                    <span class="tag-name">Primordial Bond (Lv10):</span> Mientras el Elemental Aspect está activo, ganas Resistencia al tipo de daño de su forma. Cuando tú o el Aspect recibís daño, el otro puede usar su Reaction para absorberlo. Puedes invocar el Aspect sin Concentración (duración 1 min, termina si Communion acaba)
                 </div>
             </div>
         </div>
@@ -902,6 +932,94 @@
         </div>
     </div>
 
+    <!-- ===== ELEMENTAL ASPECT ===== -->
+    <div class="aspect-section">
+        <h2 class="section-title">Kima's Elemental Aspect</h2>
+        <div class="aspect-box">
+            <div class="aspect-header">
+                <div>
+                    <div class="aspect-title" id="aspectName">Elemental Aspect</div>
+                    <div class="aspect-subtitle">Medium Elemental • Neutral</div>
+                </div>
+                <div class="aspect-controls">
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <label style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:0.05em;">Forma:</label>
+                        <select id="aspectForm" class="aspect-select" onchange="updateAspect()">
+                            <option value="phoenix">🔥 Phoenix</option>
+                            <option value="naiad">❄️ Naiad</option>
+                            <option value="sylph">⚡ Sylph</option>
+                            <option value="zaratan">⛰️ Zaratan</option>
+                            <option value="eidolon">✨ Eidolon</option>
+                        </select>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <label style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:0.05em;">Nivel:</label>
+                        <select id="aspectLevel" class="aspect-select" onchange="updateAspect()">
+                            <option value="4">4th</option>
+                            <option value="5">5th</option>
+                            <option value="6">6th</option>
+                            <option value="7">7th</option>
+                            <option value="8">8th</option>
+                            <option value="9">9th</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aspect-stats-row">
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">AC</div>
+                    <div class="aspect-stat-value" id="aspectAC">15</div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">HP</div>
+                    <div class="aspect-hp-tracker">
+                        <input type="number" class="aspect-hp-input" id="aspectHP" value="50" min="0" max="50" onchange="saveState()">
+                        <span class="aspect-hp-max" id="aspectHPMax">/ 50</span>
+                    </div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">Speed</div>
+                    <div class="aspect-stat-value" id="aspectSpeed">40 ft</div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">Resistance</div>
+                    <div class="aspect-stat-value" id="aspectResistance">Fire</div>
+                </div>
+            </div>
+
+            <div class="aspect-abilities">
+                <div class="aspect-ability"><div class="aspect-ability-name">STR</div><div class="aspect-ability-score">18</div><div class="aspect-ability-mod">+4</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">DEX</div><div class="aspect-ability-score">14</div><div class="aspect-ability-mod">+2</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">CON</div><div class="aspect-ability-score">17</div><div class="aspect-ability-mod">+3</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">INT</div><div class="aspect-ability-score">10</div><div class="aspect-ability-mod">+0</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">WIS</div><div class="aspect-ability-score">10</div><div class="aspect-ability-mod">+0</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">CHA</div><div class="aspect-ability-score">12</div><div class="aspect-ability-mod">+1</div></div>
+            </div>
+
+            <div class="aspect-traits">
+                <div class="aspect-trait"><span class="aspect-trait-name">Resistances:</span> <span id="aspectResistanceDisplay">Fire</span></div>
+                <div class="aspect-trait"><span class="aspect-trait-name">Immunities:</span> Exhaustion, Frightened, Paralyzed, Poisoned, Unconscious</div>
+                <div class="aspect-trait"><span class="aspect-trait-name">Senses:</span> Darkvision 60 ft., Passive Perception 10</div>
+                <div class="aspect-trait"><span class="aspect-trait-name">Languages:</span> Primordial; understands your languages</div>
+                <div class="aspect-trait"><span class="aspect-trait-name">Proficiency Bonus:</span> +4 (equals yours)</div>
+            </div>
+
+            <div class="aspect-form-trait" id="aspectFormTrait">
+                <span class="aspect-form-trait-name">Fiery Aura (Phoenix).</span> Sheds bright light 10 ft, dim light 10 ft. At the start of each of the Aspect's turns, each creature of your choice within the bright light must succeed on a Wisdom saving throw (DC 18) or take 1d8 + spell level Fire damage, or half on a success.
+            </div>
+
+            <div class="aspect-actions">
+                <div class="aspect-action">
+                    <span class="aspect-action-name">Multiattack.</span> Makes <span id="aspectMultiattack">2</span> Elemental Strike attacks.
+                </div>
+                <div class="aspect-action">
+                    <span class="aspect-action-name">Elemental Strike.</span> Melee Spell Attack: <strong>+10 to hit</strong>, reach 5 ft. Hit: <span id="aspectDamage">1d10 + 8</span> <span id="aspectDamageType">Fire</span> damage.
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== MAGIC ITEMS ===== -->
     <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:22px;">
         <!-- Aether Pendants -->
@@ -929,7 +1047,7 @@
             <div class="pendant-bonus">
                 <strong>Aetheric Empowerment:</strong> +2 spell attack rolls y Spell Save DC (ya incluido en stats)<br>
                 <strong>Aetheric Severance:</strong> <em>Dispel Magic</em> como Bonus Action; añade PB al ability check<br>
-                <strong>Aetheric Embodiment:</strong> Cuando activas Shroud Embodiment, puedes lanzar <em>Elminster's Elusion</em> en lugar de <em>Protection from Energy</em><br>
+                <strong>Aetheric Embodiment:</strong> Al activar <em>Elemental Communion</em>, puedes lanzar <em>Elminster's Elusion</em> como Bonus Action sin slot<br>
                 <strong>Aetheric Spells:</strong> Hablas, lees y escribes Primordial
             </div>
         </div>
@@ -1305,7 +1423,7 @@ const spells = {
         name: "Elminster's Elusion", level: "2nd", school: "Abjuration", type: "pendant",
         castingTime: "Bonus Action (o gratis al activar Communion — Aetheric Embodiment)", range: "Self", components: "V, S", duration: "Concentration, up to 10 minutes",
         description: `<p>Arcane wards protect you against magic for the duration. You have <strong>Advantage on saving throws against spells and magical effects</strong>. Additionally, if you succeed on a saving throw against a spell or magical effect and would normally take half as much damage, you instead take <strong>no damage</strong>.</p>
-        <p><strong>Aetheric Embodiment:</strong> Cuando activas <em>Elemental Communion</em>, puedes lanzar este conjuro en lugar de <em>Protection from Energy</em> — sin slot, sin concentración, dura lo que dure la Communion.</p>`
+        <p><strong>Aetheric Embodiment:</strong> Al activar <em>Elemental Communion</em>, puedes lanzar este conjuro como Bonus Action sin gastar slot.</p>`
     },
     "sleet-storm": {
         name: "Sleet Storm", level: "3rd", school: "Conjuration", type: "normal",
@@ -1903,6 +2021,44 @@ function longRest() {
 }
 
 // ===================== PERSISTENCE =====================
+// ===================== ELEMENTAL ASPECT =====================
+const aspectData = {
+    phoenix: { name: "Phoenix", resistance: "Fire",     damageType: "Fire",      speed: "40 ft, Fly 40 ft", acBonus: 0,
+        trait: "<span class='aspect-form-trait-name'>Fiery Aura (Phoenix).</span> Sheds bright light 10 ft, dim light 10 ft. At the start of each of the Aspect's turns, each creature of your choice within the bright light must succeed on a <strong>Wisdom saving throw (DC 18)</strong> or take <strong>1d8 + spell level Fire</strong> damage, or half on a success." },
+    naiad:   { name: "Naiad",   resistance: "Cold",     damageType: "Cold",      speed: "40 ft, Swim 40 ft", acBonus: 0,
+        trait: "<span class='aspect-form-trait-name'>Regenerating Waters (Naiad).</span> When the Aspect hits a creature with an attack, you or one ally within 30 feet of the Aspect regains a number of hit points equal to the <strong>spell level + 4</strong> (your spellcasting modifier)." },
+    sylph:   { name: "Sylph",   resistance: "Lightning", damageType: "Lightning", speed: "40 ft, Fly 40 ft", acBonus: 0,
+        trait: "<span class='aspect-form-trait-name'>Tempest Dash (Sylph).</span> The Aspect doesn't provoke Opportunity Attacks. When it moves at least 10 feet before making an attack, the attack deals extra <strong>Lightning damage equal to the spell level</strong>." },
+    zaratan: { name: "Zaratan", resistance: "Thunder",  damageType: "Thunder",   speed: "40 ft, Burrow 40 ft", acBonus: 2,
+        trait: "<span class='aspect-form-trait-name'>Earth Carapace (Zaratan).</span> The Aspect reduces any damage it takes by an amount equal to the <strong>spell level</strong>." },
+    eidolon: { name: "Eidolon", resistance: "Force",    damageType: "Force",     speed: "40 ft", acBonus: 0,
+        trait: "<span class='aspect-form-trait-name'>Magic Resistance (Eidolon).</span> The Aspect has <strong>Advantage on saving throws against spells and magical effects</strong>. When it succeeds on such a save, it deals Force damage equal to <strong>twice the spell level</strong> to the caster or the source of the effect." },
+};
+
+function updateAspect() {
+    const form = document.getElementById('aspectForm').value;
+    const level = parseInt(document.getElementById('aspectLevel').value);
+    const data = aspectData[form];
+
+    const ac = 11 + level + data.acBonus;
+    const hpMax = 50 + 10 * (level - 4);
+    const attacks = Math.floor(level / 2);
+    const damage = `1d10 + ${4 + level}`;
+
+    document.getElementById('aspectName').textContent = `Elemental Aspect — ${data.name}`;
+    document.getElementById('aspectAC').textContent = ac;
+    document.getElementById('aspectHPMax').textContent = `/ ${hpMax}`;
+    document.getElementById('aspectHP').max = hpMax;
+    document.getElementById('aspectSpeed').textContent = data.speed;
+    document.getElementById('aspectResistance').textContent = data.resistance;
+    document.getElementById('aspectResistanceDisplay').textContent = data.resistance;
+    document.getElementById('aspectFormTrait').innerHTML = data.trait;
+    document.getElementById('aspectMultiattack').textContent = attacks;
+    document.getElementById('aspectDamage').textContent = damage;
+    document.getElementById('aspectDamageType').textContent = data.damageType;
+    saveState();
+}
+
 function saveState() {
     const state = {
         communion: communionActive,
@@ -1912,7 +2068,10 @@ function saveState() {
         wsCharge2: document.getElementById('wsCharge2').classList.contains('used'),
         wsCharge3: document.getElementById('wsCharge3').classList.contains('used'),
         hp: document.getElementById('hpCurrent').value,
-        slots: Array.from(document.querySelectorAll('.slot-checkbox')).map(cb => cb.checked)
+        slots: Array.from(document.querySelectorAll('.slot-checkbox')).map(cb => cb.checked),
+        aspectHP: document.getElementById('aspectHP').value,
+        aspectForm: document.getElementById('aspectForm').value,
+        aspectLevel: document.getElementById('aspectLevel').value
     };
     localStorage.setItem('kima-sul-state', JSON.stringify(state));
 }
@@ -1941,8 +2100,15 @@ function loadState() {
         }
         if (state.form) currentForm = state.form;
         if (state.communion) activateCommunion();
+        if (state.aspectForm) document.getElementById('aspectForm').value = state.aspectForm;
+        if (state.aspectLevel) document.getElementById('aspectLevel').value = state.aspectLevel;
+        updateAspect();
+        if (state.aspectHP) document.getElementById('aspectHP').value = state.aspectHP;
     } catch (e) { /* ignore */ }
 }
+
+// Init aspect on load
+document.addEventListener('DOMContentLoaded', () => { updateAspect(); });
 </script>
 </body>
 </html>
