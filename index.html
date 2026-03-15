@@ -825,7 +825,7 @@
                     <span class="tag-name">Elemental Agility (Lv3):</span> Speed +10 ft. Bonus +WIS a Athletics y Acrobatics
                 </div>
                 <div class="communion-feature-tag">
-                    <span class="tag-name">Elemental Weapons (Lv3):</span> Usa WIS para attack/damage. El arma es Spellcasting Focus. Elige tipo: Fire/Cold/Lightning/Bludgeoning
+                    <span class="tag-name">Elemental Weapons (Lv3):</span> Usa WIS para attack/damage. El arma es Spellcasting Focus. Elige tipo: Fire/Cold/Lightning/Thunder
                 </div>
                 <div class="communion-feature-tag">
                     <span class="tag-name">Extra Attack (Lv6):</span> 2 ataques por Attack action. Puedes reemplazar 1 por un cantrip de 1 acción
@@ -888,7 +888,7 @@
                         <div class="weapon-form-card thunder-form" onclick="selectForm('thunder')" id="form-thunder">
                             <div class="form-element thunder-text">⛈️ Thunder</div>
                             <div class="form-name">Earthen Gauntlets</div>
-                            <div class="form-damage">1d8 Bludgeoning</div>
+                            <div class="form-damage">1d8 Thunder</div>
                             <div class="form-property">+1 AC while wielding → AC 21</div>
                         </div>
                     </div>
@@ -1046,7 +1046,6 @@
             <div class="pendant-bonus">
                 <strong>Aetheric Empowerment:</strong> +2 spell attack rolls y Spell Save DC (ya incluido en stats)<br>
                 <strong>Aetheric Severance:</strong> <em>Dispel Magic</em> como Bonus Action; añade PB al ability check<br>
-                <strong>Aetheric Embodiment:</strong> Al activar <em>Elemental Communion</em>, puedes lanzar <em>Elminster's Elusion</em> como Bonus Action sin slot<br>
                 <strong>Aetheric Spells:</strong> Hablas, lees y escribes Primordial
             </div>
         </div>
@@ -1251,7 +1250,7 @@ const spells = {
     "elemental-strike": {
         name: "Elemental Strike", level: "Cantrip", school: "Evocation", type: "subclass",
         castingTime: "1 Action", range: "Self", components: "S, M (arma con proficiencia)", duration: "Instantaneous",
-        description: `<p>Guided by elemental power, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage rolls instead of using Strength or Dexterity. If the attack deals damage, it can be <strong>Fire, Cold, Lightning, Bludgeoning</strong> or the weapon's normal damage type (your choice).</p>`,
+        description: `<p>Guided by elemental power, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage rolls instead of using Strength or Dexterity. If the attack deals damage, it can be <strong>Fire, Cold, Lightning, Thunder</strong> or the weapon's normal damage type (your choice).</p>`,
         upcast: "<strong>Cantrip Upgrade:</strong> The attack deals extra damage of the chosen type when you reach levels 5 (1d6 ✓), 11 (2d6), and 17 (3d6). <strong>At level 10: +1d6 extra damage.</strong>"
     },
     "druidcraft": {
@@ -1348,7 +1347,7 @@ const spells = {
     "elemental-flux": {
         name: "Elemental Flux", level: "2nd", school: "Evocation", type: "subclass",
         castingTime: "1 Action", range: "60 feet", components: "V, S", duration: "Instantaneous",
-        description: `<p>You release a surge of elemental energy centered on a point within range. Choose one damage type: <strong>Fire, Lightning, Bludgeoning, or Cold</strong>. Each creature of your choice in a <strong>10-foot-radius sphere</strong> centered on that point must make a <strong>Dexterity saving throw (DC 18)</strong>, taking <strong>2d6</strong> damage of the chosen type on a failed save, or half as much on a successful one.</p>
+        description: `<p>You release a surge of elemental energy centered on a point within range. Choose one damage type: <strong>Fire, Lightning, Thunder, or Cold</strong>. Each creature of your choice in a <strong>10-foot-radius sphere</strong> centered on that point must make a <strong>Dexterity saving throw (DC 18)</strong>, taking <strong>2d6</strong> damage of the chosen type on a failed save, or half as much on a successful one.</p>
         <p>Additionally, <strong>one creature of your choice</strong> in that area regains <strong>2d6 hit points</strong>.</p>`,
         upcast: "<strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, both the damage and the healing increase by 1d6 for each slot level above 2nd."
     },
@@ -1420,9 +1419,8 @@ const spells = {
     },
     "elminsters-elusion": {
         name: "Elminster's Elusion", level: "2nd", school: "Abjuration", type: "pendant",
-        castingTime: "Bonus Action (o gratis al activar Communion — Aetheric Embodiment)", range: "Self", components: "V, S", duration: "Concentration, up to 10 minutes",
-        description: `<p>Arcane wards protect you against magic for the duration. You have <strong>Advantage on saving throws against spells and magical effects</strong>. Additionally, if you succeed on a saving throw against a spell or magical effect and would normally take half as much damage, you instead take <strong>no damage</strong>.</p>
-        <p><strong>Aetheric Embodiment:</strong> Al activar <em>Elemental Communion</em>, puedes lanzar este conjuro como Bonus Action sin gastar slot.</p>`
+        castingTime: "Bonus Action", range: "Self", components: "V, S", duration: "Concentration, up to 10 minutes",
+        description: `<p>Arcane wards protect you against magic for the duration. You have <strong>Advantage on saving throws against spells and magical effects</strong>. Additionally, if you succeed on a saving throw against a spell or magical effect and would normally take half as much damage, you instead take <strong>no damage</strong>.</p>`
     },
     "sleet-storm": {
         name: "Sleet Storm", level: "3rd", school: "Conjuration", type: "normal",
@@ -1461,7 +1459,7 @@ const spells = {
         name: "Conjure Elemental Mantle", level: "4th", school: "Conjuration", type: "subclass",
         castingTime: "1 Action", range: "Self (10-ft Emanation)", components: "V, S", duration: "Concentration, up to 10 minutes",
         description: `<p>You conjure a mantle of elemental energy that swirls around you in a <strong>10-foot Emanation</strong> for the duration of the spell. Whenever the Emanation enters the space of a creature you can see and whenever a creature you can see enters the Emanation or ends its turn there, you can force that creature to make a <strong>Wisdom saving throw (DC 18)</strong>.</p>
-        <p>The creature takes <strong>5d8 Fire, Cold, Lightning, or Bludgeoning</strong> damage (your choice when you cast the spell) on a failed save or half as much damage on a successful one. A creature makes this save only <strong>once per turn</strong>.</p>
+        <p>The creature takes <strong>5d8 Fire, Cold, Lightning, or Thunder</strong> damage (your choice when you cast the spell) on a failed save or half as much damage on a successful one. A creature makes this save only <strong>once per turn</strong>.</p>
         <p>In addition, you can take the <strong>Disengage action as a Bonus Action</strong> for the spell's duration.</p>`,
         upcast: "<strong>At Higher Levels.</strong> The damage increases by 1d8 for each spell slot level above 4th."
     },
@@ -1486,7 +1484,7 @@ const spells = {
         <p><strong>Amorphous Form (Air, Fire, and Water Only).</strong> The spirit can move through a space as narrow as 1 inch wide without it counting as Difficult Terrain.</p>
         <p><strong><em>Actions</em></strong></p>
         <p><strong>Multiattack.</strong> The spirit makes a number of Slam attacks equal to half this spell's level (round down).</p>
-        <p><strong>Slam.</strong> <em>Melee Attack Roll:</em> your spell attack modifier (+10) to hit, reach 5 ft. <em>Hit:</em> 1d10 + 4 + spell level Bludgeoning (Earth), Cold (Water), Lightning (Air), or Fire (Fire) damage.</p>`,
+        <p><strong>Slam.</strong> <em>Melee Attack Roll:</em> your spell attack modifier (+10) to hit, reach 5 ft. <em>Hit:</em> 1d10 + 4 + spell level Thunder (Earth), Cold (Water), Lightning (Air), or Fire (Fire) damage.</p>`,
         upcast: "Use the spell slot's level for the spell's level in the stat block."
     },
     "counterspell": {
@@ -1589,7 +1587,7 @@ const spells = {
         name: "Kima's Primordial Convergence", level: "7th", school: "Conjuration", type: "subclass",
         castingTime: "1 Action", range: "Self (10-ft Emanation)", components: "V, S", duration: "Concentration, up to 10 minutes",
         description: `<p><em>(Conjuro disponible al Nivel 14 de Druida Elementalista. Actualmente no preparado.)</em></p>
-        <p>You become a conduit for primordial energy, surrounding yourself in a 10-foot Emanation of elemental power for the duration. Choose a damage type when you cast the spell: Fire, Cold, Lightning, or Bludgeoning.</p>
+        <p>You become a conduit for primordial energy, surrounding yourself in a 10-foot Emanation of elemental power for the duration. Choose a damage type when you cast the spell: Fire, Cold, Lightning, or Thunder.</p>
         <p>Whenever the Emanation enters the space of a creature you can see and whenever a creature you can see enters the Emanation or ends its turn there, you can choose one of the following effects:</p>
         <p><strong>Primal Wrath.</strong> The creature must make a Dexterity saving throw, taking 6d12 damage of the chosen type on a failed save, or half as much on a successful one.</p>
         <p><strong>Primal Restoration.</strong> The creature regains 4d12 + your spellcasting ability modifier hit points.</p>
