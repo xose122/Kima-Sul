@@ -573,7 +573,7 @@
                 <div class="ability-save-dual">
                     <div class="ability-save" data-save="Constitution" data-bonus="8">+8</div>
                     <div class="ability-save-divider">|</div>
-                    <div class="ability-save conc" id="concSave" data-save="Concentración" data-bonus="8" data-advantage="true">+8 ↑²</div>
+                    <div class="ability-save conc" id="concSave" data-save="Concentración" data-bonus="8" data-advantage="true">+8</div>
                 </div>
                 <div class="ability-save-labels"><span>save</span><span>conc</span></div>
             </div>
@@ -800,7 +800,7 @@
                         </div>
                         <div class="communion-stat-item">
                             <div class="c-label">Conc. Save</div>
-                            <div class="c-value" id="comConc">+8 ↑²</div>
+                            <div class="c-value" id="comConc">+8</div>
                         </div>
                         <div class="communion-stat-item">
                             <div class="c-label">Acrobatics</div>
@@ -1887,7 +1887,7 @@ function activateCommunion() {
     document.getElementById('comAC').classList.add('boosted');
     document.getElementById('comSpeed').textContent = '45 ft';
     document.getElementById('comSpeed').classList.add('boosted');
-    document.getElementById('comConc').textContent = '+12 ↑²';
+    document.getElementById('comConc').textContent = '+12';
     document.getElementById('comConc').classList.add('boosted');
     document.getElementById('comAcro').textContent = '+11';
     document.getElementById('comAcro').classList.add('boosted');
@@ -1897,7 +1897,7 @@ function activateCommunion() {
     document.getElementById('comHit').classList.add('boosted');
 
     // Update concentration save display (CON+4 prof +1 cloak +4 WIS Focus = +12)
-    document.getElementById('concSave').textContent = '+12 ↑²';
+    document.getElementById('concSave').textContent = '+12';
     document.getElementById('concSave').dataset.bonus = '12';
 
     // Update skill displays with boost icons
@@ -1927,7 +1927,7 @@ function deactivateCommunion() {
     document.getElementById('comAC').classList.remove('boosted');
     document.getElementById('comSpeed').textContent = '35 ft';
     document.getElementById('comSpeed').classList.remove('boosted');
-    document.getElementById('comConc').textContent = '+8 ↑²';
+    document.getElementById('comConc').textContent = '+8';
     document.getElementById('comConc').classList.remove('boosted');
     document.getElementById('comAcro').textContent = '+7';
     document.getElementById('comAcro').classList.remove('boosted');
@@ -1937,7 +1937,7 @@ function deactivateCommunion() {
     document.getElementById('comHit').classList.remove('boosted');
 
     // Restore concentration save
-    document.getElementById('concSave').textContent = '+8 ↑²';
+    document.getElementById('concSave').textContent = '+8';
     document.getElementById('concSave').dataset.bonus = '8';
 
     // Restore skills and hide icons
