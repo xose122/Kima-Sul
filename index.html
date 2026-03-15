@@ -834,7 +834,7 @@
                     <span class="tag-name">Focus (Lv6):</span> Adds +WIS (+4) a ST de CON para mantener concentración → total <strong>+11</strong>
                 </div>
                 <div class="communion-feature-tag">
-                    <span class="tag-name">Primordial Bond (Lv10):</span> Mientras el Elemental Aspect está activo, ganas Resistencia al tipo de daño de su forma. Cuando tú o el Aspect recibís daño, el otro puede usar su Reaction para absorberlo. Puedes invocar el Aspect sin Concentración (duración 1 min, termina si Communion acaba)
+                    <span class="tag-name">Primordial Bond (Lv10):</span> Mientras el Elemental Aspect está activo, ganas Resistencia al tipo de daño de su forma. Puedes invocar el Aspect sin Concentración (duración 1 min, termina si Communion acaba)
                 </div>
             </div>
         </div>
@@ -847,87 +847,88 @@
             <div class="aetherheart-header">
                 <div>
                     <div class="aetherheart-title">⚔ Aetherheart</div>
-                    <div class="aetherheart-subtitle">Arma Legendaria (Leg.) • Solo disponible en Elemental Communion • Requiere attunement (Elementalista)</div>
+                    <div class="aetherheart-subtitle">Weapon (special), Legendary • Solo disponible en Elemental Communion • Requiere attunement (Elementalista)</div>
                     <div style="font-size:0.82rem;color:var(--ink-light);margin-top:4px;">Ataque: <strong style="color:var(--teal-dark)">+9</strong> &nbsp;|&nbsp; Daño: <strong style="color:var(--teal-dark)">1d8+5</strong></div>
                 </div>
                 <div style="text-align:right">
-                    <div style="font-family:'Cinzel',serif;font-size:0.7rem;color:var(--ink-light);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Orb Sockets (+1 Hit/Dmg)</div>
+                    <div style="font-family:'Cinzel',serif;font-size:0.7rem;color:var(--ink-light);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Orb Sockets</div>
                     <div class="orb-sockets">
-                        <div class="orb-socket filled-earth" title="Earth Orb → Thunder charge at initiative">⛰️</div>
-                        <div class="orb-socket filled-wind" title="Wind Orb → Lightning charge at initiative">🌪️</div>
+                        <div class="orb-socket filled-earth" title="Earth Orb">⛰️</div>
+                        <div class="orb-socket filled-wind" title="Wind Orb">🌪️</div>
                         <div class="orb-socket empty" title="Empty Socket">◯</div>
                         <div class="orb-socket empty" title="Empty Socket">◯</div>
                     </div>
-                    <div style="font-size:0.72rem;color:var(--gold-dark);margin-top:5px;">2 Orbs → Bonus +1 Attack/Damage</div>
+                    <div style="font-size:0.72rem;color:var(--gold-dark);margin-top:5px;">2 Orbs → +1 Attack, +1d4 Damage</div>
                 </div>
             </div>
 
-            <div class="aetherheart-grid">
-                <!-- Weapon Forms -->
-                <div>
-                    <div class="resonance-title">Formas Elementales — Elemental Weapons</div>
-                    <div class="weapon-forms">
-                        <div class="weapon-form-card fire-form" onclick="selectForm('fire')" id="form-fire">
-                            <div class="form-element fire-text">🔥 Fuego</div>
-                            <div class="form-name">Searing Whip</div>
-                            <div class="form-damage">1d8 Fire · Reach 15 ft</div>
-                            <div class="form-property">Pull target 10 ft toward you on hit</div>
-                        </div>
-                        <div class="weapon-form-card lightning-form active-form" onclick="selectForm('lightning')" id="form-lightning">
-                            <div class="form-element lightning-text">⚡ Lightning</div>
-                            <div class="form-name">Storm Lance</div>
-                            <div class="form-damage">1d8 Lightning · Thrown 20/60</div>
-                            <div class="form-property">Returns to hand immediately after throw</div>
-                        </div>
-                        <div class="weapon-form-card cold-form" onclick="selectForm('cold')" id="form-cold">
-                            <div class="form-element cold-text">❄️ Cold</div>
-                            <div class="form-name">Glacial Blade</div>
-                            <div class="form-damage">1d8 Cold · One-handed</div>
-                            <div class="form-property">Healing spells +1d6 while wielding</div>
-                        </div>
-                        <div class="weapon-form-card thunder-form" onclick="selectForm('thunder')" id="form-thunder">
-                            <div class="form-element thunder-text">⛈️ Thunder</div>
-                            <div class="form-name">Earthen Gauntlets</div>
-                            <div class="form-damage">1d8 Thunder</div>
-                            <div class="form-property">+1 AC while wielding → AC 21</div>
-                        </div>
-                    </div>
-                </div>
+            <div style="font-size:0.85rem;color:var(--ink);margin:14px 0;padding:10px;background:rgba(255,255,255,0.05);border-left:3px solid var(--teal);">
+                <strong>Shifting Form:</strong> Una vez por turno, cuando golpeas con Aetherheart y eliges un tipo de daño usando tu feature <em>Elemental Weapons</em>, el arma puede transformarse para coincidir con ese elemento. El arma retiene su forma actual hasta que se transforma de nuevo o hasta que tu Elemental Communion termina.
+            </div>
 
-                <!-- Resonance System -->
-                <div>
-                    <div class="resonance-title">Resonance — Primal Resonance</div>
-                    <div style="font-size:0.78rem;color:var(--ink-light);font-style:italic;margin-bottom:8px;">BA para ganar 1 Resonance charge tras hacer daño elemental. Máximo 1 por tipo. Se resetean al final de Communion. Libera con BA después de un hit (mín. 2 cargas).</div>
-                    <div class="resonance-charges">
-                        <div class="resonance-charge fire-charge" id="charge-fire" onclick="toggleResonance('fire')">
-                            <span class="elem-icon">🔥</span>
-                            <span class="elem-name">Fire</span>
-                        </div>
-                        <div class="resonance-charge lightning-charge active-charge" id="charge-lightning" onclick="toggleResonance('lightning')">
-                            <span class="initiative-badge">Iniciativa</span>
-                            <span class="elem-icon">⚡</span>
-                            <span class="elem-name">Lightning</span>
-                        </div>
-                        <div class="resonance-charge cold-charge" id="charge-cold" onclick="toggleResonance('cold')">
-                            <span class="elem-icon">❄️</span>
-                            <span class="elem-name">Cold</span>
-                        </div>
-                        <div class="resonance-charge thunder-charge active-charge" id="charge-thunder" onclick="toggleResonance('thunder')">
-                            <span class="initiative-badge">Iniciativa</span>
-                            <span class="elem-icon">⛈️</span>
-                            <span class="elem-name">Thunder</span>
-                        </div>
+            <div>
+                <div class="resonance-title">Formas Elementales</div>
+                <div class="weapon-forms">
+                    <div class="weapon-form-card fire-form" onclick="selectForm('fire')" id="form-fire">
+                        <div class="form-element fire-text">🔥 Fire</div>
+                        <div class="form-name">Searing Whip</div>
+                        <div class="form-damage">1d8 Fire · Reach 15 ft., Finesse</div>
+                        <div class="form-property"><strong>Lash:</strong> On a hit, you can pull the target up to 10 feet toward you</div>
                     </div>
-                    <div class="resonance-combo" id="resonanceCombo">
-                        <div class="combo-label">Combinación Activa</div>
-                        <div class="combo-name" id="comboName">Storm Surge</div>
-                        <div class="combo-damage" id="comboDamage">⚔ 2d8 (Lightning + Cold split)</div>
-                        <div class="combo-effect" id="comboEffect">Target can't take reactions until end of your next turn. If it moves during its turn, takes 1d8 lightning + 1d8 cold.</div>
+                    <div class="weapon-form-card lightning-form active-form" onclick="selectForm('lightning')" id="form-lightning">
+                        <div class="form-element lightning-text">⚡ Lightning</div>
+                        <div class="form-name">Storm Bow</div>
+                        <div class="form-damage">1d8 Lightning · Two-Handed</div>
+                        <div class="form-property">Range (150/600)</div>
                     </div>
-                    <button class="resonance-release-btn" id="releaseBtn" onclick="releaseResonance()">
-                        Release Resonance (BA after hit)
-                    </button>
+                    <div class="weapon-form-card cold-form" onclick="selectForm('cold')" id="form-cold">
+                        <div class="form-element cold-text">❄️ Cold</div>
+                        <div class="form-name">Glacial Blade</div>
+                        <div class="form-damage">1d8 Cold · Finesse</div>
+                        <div class="form-property"><strong>Glacial Infusion:</strong> When you cast a spell that restores or grants Temp HP, roll a d6 and add the result</div>
+                    </div>
+                    <div class="weapon-form-card thunder-form" onclick="selectForm('thunder')" id="form-thunder">
+                        <div class="form-element thunder-text">⛈️ Thunder</div>
+                        <div class="form-name">Earthen Fist</div>
+                        <div class="form-damage">1d8 Thunder · Finesse</div>
+                        <div class="form-property"><strong>Bulwark:</strong> You gain a +1 bonus to AC while wielding this weapon → AC 21</div>
+                    </div>
                 </div>
+            </div>
+
+            <div style="margin-top:16px;">
+                <div class="resonance-title">Orb Socket Power Progression</div>
+                <table style="width:100%;font-size:0.82rem;border-collapse:collapse;margin-top:8px;">
+                    <thead>
+                        <tr style="background:rgba(255,255,255,0.08);border-bottom:2px solid var(--border-ornate);">
+                            <th style="padding:8px;text-align:center;font-family:'Cinzel',serif;color:var(--gold-dark);">Orbs Socketed</th>
+                            <th style="padding:8px;text-align:center;font-family:'Cinzel',serif;color:var(--gold-dark);">Attack Bonus</th>
+                            <th style="padding:8px;text-align:center;font-family:'Cinzel',serif;color:var(--gold-dark);">Damage Bonus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+                            <td style="padding:8px;text-align:center;">0-1</td>
+                            <td style="padding:8px;text-align:center;">+0</td>
+                            <td style="padding:8px;text-align:center;">+0</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                            <td style="padding:8px;text-align:center;">2</td>
+                            <td style="padding:8px;text-align:center;color:var(--teal);">+1</td>
+                            <td style="padding:8px;text-align:center;color:var(--teal);">+1d4</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+                            <td style="padding:8px;text-align:center;">3</td>
+                            <td style="padding:8px;text-align:center;color:var(--teal);">+2</td>
+                            <td style="padding:8px;text-align:center;color:var(--teal);">+2d4</td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.03);">
+                            <td style="padding:8px;text-align:center;">4</td>
+                            <td style="padding:8px;text-align:center;color:var(--gold-dark);font-weight:bold;">+3</td>
+                            <td style="padding:8px;text-align:center;color:var(--gold-dark);font-weight:bold;">+3d4</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -1015,6 +1016,69 @@
                 <div class="aspect-action">
                     <span class="aspect-action-name">Elemental Strike.</span> Melee Spell Attack: <strong>+10 to hit</strong>, reach 5 ft. Hit: <span id="aspectDamage">1d10 + 8</span> <span id="aspectDamageType">Fire</span> damage.
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WILD SHAPE ===== -->
+    <div class="aspect-section">
+        <h2 class="section-title">Wild Shape Forms</h2>
+        <div class="aspect-box">
+            <div class="aspect-header">
+                <div>
+                    <div class="aspect-title" id="wildshapeName">Giant Swan</div>
+                    <div class="aspect-subtitle" id="wildshapeSubtitle">Large Beast • CR 1</div>
+                </div>
+                <div class="aspect-controls">
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <label style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:0.05em;">Form:</label>
+                        <select id="wildshapeForm" class="aspect-select" onchange="updateWildshape()">
+                            <option value="giant-swan">🦢 Giant Swan</option>
+                            <option value="giant-bat">🦇 Giant Bat</option>
+                            <option value="riding-horse">🐴 Riding Horse</option>
+                            <option value="owl">🦉 Owl</option>
+                            <option value="ape">🦍 Ape</option>
+                            <option value="giant-octopus">🐙 Giant Octopus</option>
+                            <option value="spider">🕷️ Spider</option>
+                            <option value="cave-badger">🦡 Cave Badger</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aspect-stats-row">
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">AC</div>
+                    <div class="aspect-stat-value" id="wildshapeAC">13</div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">HP</div>
+                    <div class="aspect-hp-tracker">
+                        <input type="number" class="aspect-hp-input" id="wildshapeHP" value="26" min="0" max="26" onchange="saveState()">
+                        <span class="aspect-hp-max" id="wildshapeHPMax">/ 26</span>
+                    </div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">Speed</div>
+                    <div class="aspect-stat-value" id="wildshapeSpeed">10 ft., fly 80 ft.</div>
+                </div>
+                <div class="aspect-stat-box">
+                    <div class="aspect-stat-label">CR</div>
+                    <div class="aspect-stat-value" id="wildshapeCR">1</div>
+                </div>
+            </div>
+
+            <div class="aspect-abilities">
+                <div class="aspect-ability"><div class="aspect-ability-name">STR</div><div class="aspect-ability-score" id="wildshapeSTR">16</div><div class="aspect-ability-mod" id="wildshapeSTRMod">+3</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">DEX</div><div class="aspect-ability-score" id="wildshapeDEX">16</div><div class="aspect-ability-mod" id="wildshapeDEXMod">+3</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">CON</div><div class="aspect-ability-score" id="wildshapeCON">12</div><div class="aspect-ability-mod" id="wildshapeCONMod">+1</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">INT</div><div class="aspect-ability-score" id="wildshapeINT">2</div><div class="aspect-ability-mod" id="wildshapeINTMod">-4</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">WIS</div><div class="aspect-ability-score" id="wildshapeWIS">10</div><div class="aspect-ability-mod" id="wildshapeWISMod">+0</div></div>
+                <div class="aspect-ability"><div class="aspect-ability-name">CHA</div><div class="aspect-ability-score" id="wildshapeCHA">5</div><div class="aspect-ability-mod" id="wildshapeCHAMod">-3</div></div>
+            </div>
+
+            <div id="wildshapeTraits" class="aspect-traits">
+                <div class="aspect-trait"><span class="aspect-trait-name">Keen Sight.</span> The swan has advantage on Wisdom (Perception) checks that rely on sight.</div>
             </div>
         </div>
     </div>
@@ -1596,35 +1660,122 @@ const spells = {
     }
 };
 
-// ===================== RESONANCE DATA =====================
-const resonanceCombos = {
-    // 2 elements (alphabetical)
-    "fire+lightning":       { name: "Plasma Burst",        damage: "2d6 (Fire + Lightning)",        effect: "Target must succeed on a Dexterity saving throw (DC 18) or be blinded until the end of your next turn." },
-    "cold+fire":            { name: "Thermal Shock",        damage: "2d8 (Fire + Cold)",              effect: "The target has disadvantage on attack rolls until the beginning of your next turn." },
-    "fire+thunder":         { name: "Magma Strike",         damage: "2d12 (Fire + Thunder)",          effect: "—" },
-    "cold+lightning":       { name: "Storm Surge",          damage: "2d8 (Lightning + Cold)",         effect: "The target can't take reactions until the end of your next turn. If it moves during its turn, takes 1d8 lightning + 1d8 cold." },
-    "lightning+thunder":    { name: "Thunderclap",          damage: "2d6 (Lightning + Thunder)",      effect: "Target must succeed on a Strength saving throw (DC 18) or be pushed 10 ft away and knocked Prone." },
-    "cold+thunder":         { name: "Shatter Frost",        damage: "2d10 (Cold + Thunder)",          effect: "The target's speed is reduced by 10 feet until the start of your next turn." },
-    // 3 elements (alphabetical)
-    "cold+fire+lightning":  { name: "Elemental Tempest",    damage: "3d6 (Fire+Lightning+Cold)",      effect: "The elemental energy surges outward. One creature of your choice within 10 ft of the target takes 1d6 fire, 1d6 lightning, and 1d6 cold damage." },
-    "fire+lightning+thunder":{ name: "Volcanic Eruption",   damage: "3d6 (Fire+Lightning+Thunder)",   effect: "Target is knocked prone. Must succeed on a Dexterity saving throw (DC 18) or take additional 1d6 fire + 1d6 lightning + 1d6 thunder damage." },
-    "cold+fire+thunder":    { name: "Permafrost Shatter",   damage: "3d6 (Fire+Cold+Thunder)",        effect: "The target has disadvantage on its next saving throw." },
-    "cold+lightning+thunder":{ name: "Glacial Thunder",     damage: "3d6 (Lightning+Cold+Thunder)",   effect: "Target must succeed on a Constitution saving throw (DC 18) or be restrained until the end of your next turn." },
-    // 4 elements (alphabetical)
-    "cold+fire+lightning+thunder": { name: "Primordial Convergence", damage: "4d12 (All Elements)", effect: "Target must succeed on a Constitution saving throw (DC 18) or be stunned until the end of your next turn." }
-};
-
 // ===================== STATE =====================
 let communionActive = false;
 let diceToastTimeout = null;
-let activeResonance = new Set(['lightning', 'thunder']); // Initiative charges from orbs
 let currentForm = 'lightning';
+
+// ===================== WILD SHAPE DATA =====================
+const wildshapeData = {
+    "giant-swan": {
+        name: "Giant Swan",
+        size: "Large",
+        cr: "1",
+        hp: 26,
+        ac: 13,
+        speed: "10 ft., fly 80 ft.",
+        str: 16, dex: 16, con: 12, int: 2, wis: 10, cha: 5,
+        traits: [
+            { name: "Keen Sight", desc: "The swan has advantage on Wisdom (Perception) checks that rely on sight." }
+        ]
+    },
+    "giant-bat": {
+        name: "Giant Bat",
+        size: "Large",
+        cr: "1/4",
+        hp: 22,
+        ac: 13,
+        speed: "10 ft., fly 60 ft.",
+        str: 15, dex: 16, con: 11, int: 2, wis: 12, cha: 6,
+        traits: [
+            { name: "Blindsight", desc: "Blindsight 120 ft." }
+        ]
+    },
+    "riding-horse": {
+        name: "Riding Horse",
+        size: "Large",
+        cr: "1/4",
+        hp: 13,
+        ac: 11,
+        speed: "60 ft.",
+        str: 16, dex: 12, con: 12, int: 2, wis: 11, cha: 7,
+        traits: []
+    },
+    "owl": {
+        name: "Owl",
+        size: "Tiny",
+        cr: "0",
+        hp: 1,
+        ac: 11,
+        speed: "5 ft., fly 60 ft.",
+        str: 3, dex: 13, con: 8, int: 2, wis: 12, cha: 7,
+        traits: [
+            { name: "Keen Hearing and Sight", desc: "Keen Hearing and Sight 120 ft. Expertise in Perception and Stealth." },
+            { name: "Flyby", desc: "The owl doesn't provoke Opportunity Attack when it flies out of an enemy's reach." }
+        ]
+    },
+    "ape": {
+        name: "Ape",
+        size: "Medium",
+        cr: "1/2",
+        hp: 19,
+        ac: 12,
+        speed: "30 ft., climb 30 ft.",
+        str: 16, dex: 14, con: 14, int: 6, wis: 12, cha: 7,
+        traits: [
+            { name: "Proficiency", desc: "Proficiency in Athletics and Perception." }
+        ]
+    },
+    "giant-octopus": {
+        name: "Giant Octopus",
+        size: "Large",
+        cr: "1",
+        hp: 45,
+        ac: 11,
+        speed: "10 ft., swim 60 ft.",
+        str: 17, dex: 13, con: 13, int: 4, wis: 10, cha: 4,
+        traits: [
+            { name: "Senses", desc: "Darkvision 60 ft. Expertise in Perception and Stealth." },
+            { name: "Hold Breath", desc: "While out of water, the octopus can hold its breath for 1 hour." },
+            { name: "Water Breathing", desc: "The octopus can breathe only underwater. It can hold its breath for 1 hour outside water." },
+            { name: "Underwater Camouflage", desc: "The octopus has advantage on Dexterity (Stealth) checks made while underwater." },
+            { name: "Ink Cloud (1/Day)", desc: "While underwater, the octopus can use a bonus action to release a 10-foot cube of ink. The cube is Heavily Obscured for 1 minute or until a strong current or similar effect disperses the ink." }
+        ]
+    },
+    "spider": {
+        name: "Spider",
+        size: "Tiny",
+        cr: "0",
+        hp: 1,
+        ac: 12,
+        speed: "20 ft., climb 20 ft.",
+        str: 2, dex: 14, con: 8, int: 1, wis: 10, cha: 2,
+        traits: [
+            { name: "Senses", desc: "Darkvision 30 ft." },
+            { name: "Spider Climb", desc: "The spider can climb difficult surfaces, including along ceilings, without needing to make an ability check." },
+            { name: "Web Walker", desc: "The spider ignores movement restrictions caused by webbing. It can move through webs as if they were difficult terrain and doesn't need to make an ability check to avoid becoming restrained by the webs of any other creature in contact with the same web." }
+        ]
+    },
+    "cave-badger": {
+        name: "Cave Badger",
+        size: "Medium",
+        cr: "1/4",
+        hp: 13,
+        ac: 12,
+        speed: "30 ft., burrow 15 ft.",
+        str: 13, dex: 10, con: 15, int: 2, wis: 12, cha: 5,
+        traits: [
+            { name: "Senses", desc: "Darkvision 30 ft." },
+            { name: "Keen Smell", desc: "The badger has advantage on Wisdom (Perception) checks that rely on smell." },
+            { name: "Tunneler", desc: "When the badger burrows, it leaves tunnels behind." }
+        ]
+    }
+};
 
 // ===================== INIT =====================
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
     renderPendantCharges();
-    updateResonanceDisplay();
     updateWeaponFormDisplay();
 
     // Click listeners for skills
@@ -1654,13 +1805,6 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.initiative-roll').addEventListener('click', function(e) {
         e.stopPropagation();
         showDiceRoll('Initiative', 3);
-        // Auto-add resonance charges from orbs
-        activeResonance.add('lightning');
-        activeResonance.add('thunder');
-        document.getElementById('charge-lightning').classList.add('active-charge');
-        document.getElementById('charge-thunder').classList.add('active-charge');
-        updateResonanceDisplay();
-        saveState();
     });
 
     // Spell links
@@ -1804,77 +1948,6 @@ function deactivateCommunion() {
     document.getElementById('athleticsSkill').dataset.bonus = '0';
     document.getElementById('athleticsIcon').style.display = 'none';
 
-    // Reset resonance
-    activeResonance.clear();
-    document.querySelectorAll('.resonance-charge').forEach(c => c.classList.remove('active-charge'));
-    // Re-add initiative ones
-    activeResonance.add('lightning');
-    activeResonance.add('thunder');
-    document.getElementById('charge-lightning').classList.add('active-charge');
-    document.getElementById('charge-thunder').classList.add('active-charge');
-    updateResonanceDisplay();
-
-    saveState();
-}
-
-// ===================== RESONANCE =====================
-function toggleResonance(element) {
-    const el = document.getElementById(`charge-${element}`);
-    if (activeResonance.has(element)) {
-        activeResonance.delete(element);
-        el.classList.remove('active-charge');
-    } else {
-        activeResonance.add(element);
-        el.classList.add('active-charge');
-    }
-    updateResonanceDisplay();
-    saveState();
-}
-
-function updateResonanceDisplay() {
-    const active = Array.from(activeResonance).sort();
-    const key = active.join('+');
-    const comboDiv = document.getElementById('resonanceCombo');
-    const nameEl = document.getElementById('comboName');
-    const dmgEl = document.getElementById('comboDamage');
-    const effectEl = document.getElementById('comboEffect');
-    const releaseBtn = document.getElementById('releaseBtn');
-
-    if (active.length < 2) {
-        nameEl.textContent = active.length === 1 ? `1 carga: ${active[0]}` : 'Sin cargas activas';
-        dmgEl.textContent = 'Necesitas mínimo 2 cargas para liberar';
-        effectEl.textContent = '';
-        releaseBtn.disabled = true;
-        comboDiv.style.borderColor = 'var(--border-ornate)';
-    } else {
-        const combo = resonanceCombos[key];
-        if (combo) {
-            nameEl.textContent = combo.name;
-            dmgEl.textContent = '⚔ ' + combo.damage;
-            effectEl.textContent = combo.effect;
-            releaseBtn.disabled = false;
-        } else {
-            nameEl.textContent = `${active.length} cargas activas`;
-            dmgEl.textContent = active.map(e => e.charAt(0).toUpperCase()+e.slice(1)).join(' + ');
-            effectEl.textContent = 'Combinación sin efecto especial definido.';
-            releaseBtn.disabled = false;
-        }
-        comboDiv.style.borderColor = 'var(--gold-dark)';
-    }
-}
-
-function releaseResonance() {
-    if (activeResonance.size < 2) return;
-    const active = Array.from(activeResonance).sort();
-    const key = active.join('+');
-    const combo = resonanceCombos[key];
-    const name = combo ? combo.name : 'Resonance Release';
-    showNotify(name, `Liberado: ${active.map(e=>e.charAt(0).toUpperCase()+e.slice(1)).join('+')}`);
-
-    // Clear charges
-    activeResonance.clear();
-    document.querySelectorAll('.resonance-charge').forEach(c => c.classList.remove('active-charge'));
-    updateResonanceDisplay();
     saveState();
 }
 
@@ -2021,15 +2094,15 @@ function longRest() {
 // ===================== ELEMENTAL ASPECT =====================
 const aspectData = {
     phoenix: { name: "Phoenix", resistance: "Fire",     damageType: "Fire",      speed: "40 ft, Fly 40 ft", acBonus: 0,
-        trait: "<span class='aspect-form-trait-name'>Fiery Aura (Phoenix).</span> Sheds bright light 10 ft, dim light 10 ft. At the start of each of the Aspect's turns, each creature of your choice within the bright light must succeed on a <strong>Wisdom saving throw (DC 18)</strong> or take <strong>1d8 + spell level Fire</strong> damage, or half on a success." },
+        trait: "<span class='aspect-form-trait-name'>Fiery Aura (Phoenix).</span> The Aspect sheds bright light in a 10-foot radius and dim light for an additional 10 feet. Whenever a creature of your choice starts its turn in the bright light, that creature takes <strong>fire damage equal to the spell's level</strong>." },
     naiad:   { name: "Naiad",   resistance: "Cold",     damageType: "Cold",      speed: "40 ft, Swim 40 ft", acBonus: 0,
-        trait: "<span class='aspect-form-trait-name'>Regenerating Waters (Naiad).</span> When the Aspect hits a creature with an attack, you or one ally within 30 feet of the Aspect regains a number of hit points equal to the <strong>spell level + 4</strong> (your spellcasting modifier)." },
+        trait: "<span class='aspect-form-trait-name'>Protective Waters (Naiad).</span> When the Aspect hits a creature with an attack, the Aspect or one ally within 30 feet of the Aspect gains a number of <strong>Temporary Hit Points equal to twice the spell's level</strong>." },
     sylph:   { name: "Sylph",   resistance: "Lightning", damageType: "Lightning", speed: "40 ft, Fly 40 ft", acBonus: 0,
-        trait: "<span class='aspect-form-trait-name'>Tempest Dash (Sylph).</span> The Aspect doesn't provoke Opportunity Attacks. When it moves at least 10 feet before making an attack, the attack deals extra <strong>Lightning damage equal to the spell level</strong>." },
+        trait: "<span class='aspect-form-trait-name'>Tempest Dash (Sylph).</span> The Aspect doesn't provoke Opportunity Attacks. Additionally, when the Aspect moves at least 10 feet before making an attack, the attack deals <strong>extra Lightning damage equal to the spell's level</strong>." },
     zaratan: { name: "Zaratan", resistance: "Thunder",  damageType: "Thunder",   speed: "40 ft, Burrow 40 ft", acBonus: 2,
-        trait: "<span class='aspect-form-trait-name'>Earth Carapace (Zaratan).</span> The Aspect reduces any damage it takes by an amount equal to the <strong>spell level</strong>." },
+        trait: "<span class='aspect-form-trait-name'>Earth Carapace (Zaratan).</span> The Aspect reduces any damage it takes by an amount equal to the <strong>spell's level</strong>." },
     eidolon: { name: "Eidolon", resistance: "Force",    damageType: "Force",     speed: "40 ft", acBonus: 0,
-        trait: "<span class='aspect-form-trait-name'>Magic Resistance (Eidolon).</span> The Aspect has <strong>Advantage on saving throws against spells and magical effects</strong>. When it succeeds on such a save, it deals Force damage equal to <strong>twice the spell level</strong> to the caster or the source of the effect." },
+        trait: "<span class='aspect-form-trait-name'>Greater Magic Resistance (Eidolon).</span> The Aspect has <strong>Advantage on saving throws against spells and magical effects</strong>. Additionally, if the Aspect succeeds on a saving throw against a spell or magical effect and would normally take half as much damage, the Aspect instead takes <strong>no damage</strong>." },
 };
 
 function updateAspect() {
@@ -2055,11 +2128,60 @@ function updateAspect() {
     saveState();
 }
 
+// ===================== WILD SHAPE =====================
+function updateWildshape() {
+    const form = document.getElementById('wildshapeForm').value;
+    const data = wildshapeData[form];
+
+    // Helper function to calculate ability modifier
+    const calcMod = (score) => {
+        const mod = Math.floor((score - 10) / 2);
+        return mod >= 0 ? `+${mod}` : `${mod}`;
+    };
+
+    // Update header
+    document.getElementById('wildshapeName').textContent = data.name;
+    document.getElementById('wildshapeSubtitle').textContent = `${data.size} Beast • CR ${data.cr}`;
+
+    // Update stats
+    document.getElementById('wildshapeAC').textContent = data.ac;
+    document.getElementById('wildshapeCR').textContent = data.cr;
+    document.getElementById('wildshapeSpeed').textContent = data.speed;
+    document.getElementById('wildshapeHPMax').textContent = `/ ${data.hp}`;
+    document.getElementById('wildshapeHP').max = data.hp;
+    document.getElementById('wildshapeHP').value = data.hp;
+
+    // Update abilities
+    document.getElementById('wildshapeSTR').textContent = data.str;
+    document.getElementById('wildshapeSTRMod').textContent = calcMod(data.str);
+    document.getElementById('wildshapeDEX').textContent = data.dex;
+    document.getElementById('wildshapeDEXMod').textContent = calcMod(data.dex);
+    document.getElementById('wildshapeCON').textContent = data.con;
+    document.getElementById('wildshapeCONMod').textContent = calcMod(data.con);
+    document.getElementById('wildshapeINT').textContent = data.int;
+    document.getElementById('wildshapeINTMod').textContent = calcMod(data.int);
+    document.getElementById('wildshapeWIS').textContent = data.wis;
+    document.getElementById('wildshapeWISMod').textContent = calcMod(data.wis);
+    document.getElementById('wildshapeCHA').textContent = data.cha;
+    document.getElementById('wildshapeCHAMod').textContent = calcMod(data.cha);
+
+    // Update traits
+    const traitsContainer = document.getElementById('wildshapeTraits');
+    if (data.traits.length === 0) {
+        traitsContainer.innerHTML = '<div class="aspect-trait" style="font-style:italic;color:var(--ink-light);">No special traits.</div>';
+    } else {
+        traitsContainer.innerHTML = data.traits.map(trait =>
+            `<div class="aspect-trait"><span class="aspect-trait-name">${trait.name}.</span> ${trait.desc}</div>`
+        ).join('');
+    }
+
+    saveState();
+}
+
 function saveState() {
     const state = {
         communion: communionActive,
         form: currentForm,
-        resonance: Array.from(activeResonance),
         wsCharge1: document.getElementById('wsCharge1').classList.contains('used'),
         wsCharge2: document.getElementById('wsCharge2').classList.contains('used'),
         wsCharge3: document.getElementById('wsCharge3').classList.contains('used'),
@@ -2067,7 +2189,9 @@ function saveState() {
         slots: Array.from(document.querySelectorAll('.slot-checkbox')).map(cb => cb.checked),
         aspectHP: document.getElementById('aspectHP').value,
         aspectForm: document.getElementById('aspectForm').value,
-        aspectLevel: document.getElementById('aspectLevel').value
+        aspectLevel: document.getElementById('aspectLevel').value,
+        wildshapeHP: document.getElementById('wildshapeHP').value,
+        wildshapeForm: document.getElementById('wildshapeForm').value
     };
     localStorage.setItem('kima-sul-state', JSON.stringify(state));
 }
@@ -2086,25 +2210,23 @@ function loadState() {
             const boxes = document.querySelectorAll('.slot-checkbox');
             state.slots.forEach((checked, i) => { if (boxes[i]) boxes[i].checked = checked; });
         }
-        if (state.resonance) {
-            activeResonance = new Set(state.resonance);
-            document.querySelectorAll('.resonance-charge').forEach(c => c.classList.remove('active-charge'));
-            activeResonance.forEach(elem => {
-                const el = document.getElementById(`charge-${elem}`);
-                if (el) el.classList.add('active-charge');
-            });
-        }
         if (state.form) currentForm = state.form;
         if (state.communion) activateCommunion();
         if (state.aspectForm) document.getElementById('aspectForm').value = state.aspectForm;
         if (state.aspectLevel) document.getElementById('aspectLevel').value = state.aspectLevel;
         updateAspect();
         if (state.aspectHP) document.getElementById('aspectHP').value = state.aspectHP;
+        if (state.wildshapeForm) document.getElementById('wildshapeForm').value = state.wildshapeForm;
+        updateWildshape();
+        if (state.wildshapeHP) document.getElementById('wildshapeHP').value = state.wildshapeHP;
     } catch (e) { /* ignore */ }
 }
 
-// Init aspect on load
-document.addEventListener('DOMContentLoaded', () => { updateAspect(); });
+// Init aspect and wildshape on load
+document.addEventListener('DOMContentLoaded', () => {
+    updateAspect();
+    updateWildshape();
+});
 </script>
 </body>
 </html>
